@@ -1,0 +1,25 @@
+<ion-view title="My ads" class=" ">
+    <ion-content padding="true" class="has-header">
+        <div ng-repeat="item in items" ng-show="showItem">
+        <div class="card">
+            <h4  style="color:#000000;text-align:center;" class="item item-divider">{{item.name}}</h4>
+            
+            <div class="item item-body">
+            <p>Description: {{item.descr}}</p>
+            <p>Category: {{item.category}}</p>
+            <p>Type: {{item.type}}</p>
+            <p>State: {{item.state}}</p>
+            <p>Contact: {{item.contact}}</p>
+            </div>
+            <div  class=" button-bar ">
+                <button  style="border-radius:5px 5px 5px 5px;" class=" button button-light  button-clear icon ion-android-delete " ng-click="deleteItem(item.id)"></button>
+                
+            </div>
+        </div>
+        </div>
+        
+        <div ng-show="!showItem">
+        <h4 style="color:#000000;text-align:center;">{{message}}</h4>
+        </div>
+    </ion-content>
+</ion-view>

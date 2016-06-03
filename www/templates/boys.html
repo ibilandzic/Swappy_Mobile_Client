@@ -1,0 +1,34 @@
+<ion-view title="Boys" id="page7" style="background-color:#8FCCDF;" class=" ">
+    <ion-content padding="true" class="has-header">
+        <div ng-repeat="item in items" ng-show="showItem">
+        <div class="card">
+            <h4  style="color:#000000;text-align:center;" class="item item-divider">{{item.name}}</h4>
+            
+            <div class="item item-body">
+            <p>Description: {{item.descr}}</p>
+            <p>Category: {{item.category}}</p>
+            <p>Type: {{item.type}}</p>
+            <p>State: {{item.state}}</p>
+            <p>Contact: {{item.contact}}</p>
+            <!--
+            <ion-list id="woman-list4" class=" ">
+                <ion-item id="woman-list-item15" class="  "><p>{{item.descr}}</p></ion-item>
+                <ion-item id="woman-list-item16" class="  ">{{item.category}}</ion-item>
+                <ion-item id="woman-list-item18" class="  ">item.type</ion-item>
+                <ion-item id="woman-list-item19" class="  ">item.state</ion-item>
+                <ion-item id="woman-list-item20" class="  ">item.contact</ion-item>
+            </ion-list>
+-->     </div>
+            <div id="woman-button-bar1" class=" button-bar ">
+                <button id="favBtn" style="border-radius:5px 5px 5px 5px;" class=" button button-dark  button-clear icon ion-ios-heart " ng-click="addToFavorites(item.id)"></button>
+                
+            </div>
+        </div>
+        </div>
+        
+        <div ng-show="!showItem">
+        <h4  style="color:#000000;text-align:center;">{{message}}</h4>
+        </div>
+        
+    </ion-content>
+</ion-view>

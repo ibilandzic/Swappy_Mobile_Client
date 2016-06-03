@@ -1,0 +1,37 @@
+<ion-view title="Signup" id="page5" class=" ">
+    <ion-content padding="true" class="has-header">
+        <form id="signup-form2" class="list " ng-submit="createNewAccount()">
+            <ion-list id="signup-list2" class=" ">
+                <label class="item item-input " id="signup-input3" name="firstName">
+                    <span class="input-label">First name</span>
+                    <input type="text" placeholder="First name" ng-model="registration.first_name">
+                </label>
+                <label class="item item-input " id="signup-input6" name="lastName">
+                    <span class="input-label">Last name</span>
+                    <input type="text" placeholder="Last name" ng-model="registration.last_name">
+                </label>
+                <label class="item item-input " id="signup-input4" name="username">
+                    <span class="input-label">Username</span>
+                    <input type="text" placeholder="Username" ng-model="registration.username">
+                </label>
+                <label class="item item-input " id="signup-input5" name="Email">
+                    <span class="input-label">Email</span>
+                    <input type="text" placeholder="Email" ng-model="registration.email">
+                </label>
+                <label class="item item-input " id="signup-input8" name="Address">
+                    <span class="input-label">Address</span>
+                    <input type="text" placeholder="Address" ng-model="registration.address">
+                </label>
+                <label class="item item-input " id="signup-input9" name="phone">
+                    <span class="input-label">Phone</span>
+                    <input type="text" placeholder="Phone number" ng-model="registration.phone">
+                </label>
+                <label class="item item-input " id="signup-input7" name="password">
+                    <span class="input-label">Password</span>
+                    <input type="password" placeholder="Password" ng-model="registration.password">
+                </label>
+            </ion-list>
+            <button id="signup-button3" class=" button button-dark  button-block ">Sign up</button>
+        </form>
+    </ion-content>
+</ion-view>

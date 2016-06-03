@@ -1,0 +1,42 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-dark">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="side-menu21"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" id="side-menu21">
+        <ion-header-bar class="bar-dark">
+            <div class="title">Menu</div>
+        </ion-header-bar>
+        <ion-content padding="false" class="side-menu-left has-header">
+            <ion-list id="menu-list3" class=" ">
+                <ion-item class="item-icon-right  " id="menu-list-item1" ui-sref="menu.home" menu-close="">Home
+                    <i class="icon ion-android-home"></i>
+                </ion-item>
+                </ion-item>
+                <ion-item class="item-icon-right  " id="menu-list-item11" ui-sref="menu.login" menu-close="" ng-if="!loggedIn">Login
+                    <i class="icon ion-log-in"></i>
+                </ion-item>
+                <ion-item class="item-icon-right  " id="menu-list-item12" menu-close="" ng-if="loggedIn"><a ng-click="logOut()">Logout
+                    <i class="icon ion-log-out"></i></a>
+                </ion-item>
+                <ion-item id="menu-list-item17" ui-sref="menu.signup" menu-close="" class="  " ng-if="!loggedIn">Sign up</ion-item>
+                <ion-item id="woman" ui-sref="menu.woman" menu-close="" class="  ">Woman</ion-item>
+                <ion-item id="man" ui-sref="menu.man" menu-close="" class="  ">Man</ion-item>
+                <ion-item id="girls" ui-sref="menu.girls" menu-close="" class="  ">Girls</ion-item>
+                <ion-item id="boys" ui-sref="menu.boys" menu-close="" class="  ">Boys</ion-item>
+                <ion-item id="myads" ui-sref="menu.myAds" menu-close="" class="  ">My ads</ion-item>
+                <ion-item class="item-icon-right  " id="newad" ui-sref="menu.newAd" menu-close="">New ad
+                    <i class="icon ion-android-add"></i>
+                </ion-item>
+                <ion-item class="item-icon-right  " id="favorites" ui-sref="menu.favorites" menu-close="">Favorites
+                    <i class="icon ion-heart"></i>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

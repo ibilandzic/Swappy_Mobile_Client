@@ -1,0 +1,27 @@
+<ion-view title="Favorites" id="page10" class=" " style="background-color:#DCD1EB;">
+    <ion-content padding="true" class="has-header">
+        <div ng-repeat="favorite in favorites" ng-show="showFavorites">
+        <div class="card ">
+            <h4 id="favorites-heading6" style="color:#000000;text-align:center;" class=" ">{{favorite.item.name}}</h4>
+            
+            
+            <div class="item item-body">
+                <p>Description: {{favorite.item.descr}}</p>
+                <p>Category: {{favorite.item.category}}</p>
+                <p>Type: {{favorite.item.type}}</p>
+                <p>State: {{favorite.item.state}}</p>
+                <p>Contact: {{favorite.item.contact}}</p>
+            </div>
+            <div id="favorites-button-bar6" class=" button-bar ">
+                <button  style="border-radius:5px 5px 5px 5px;" class=" button button-light  button-clear icon ion-android-delete " ng-click="deleteFavorite(favorite.id)"></button>
+                <!--
+                <button  style="border-radius:5px 5px 5px 5px;" class=" button button-light  button-block icon ion-android-mail "></button> -->
+            </div>
+        </div>
+        </div>
+        
+        <div ng-show="!showFavorites">
+        <h4 style="color:#000000;text-align:center;">{{message}}</h4>
+        </div>
+    </ion-content>
+</ion-view>
