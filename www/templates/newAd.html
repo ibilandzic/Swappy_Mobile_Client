@@ -1,63 +1,64 @@
-<ion-view title="New ad" id="page11" class=" ">
+<ion-view title="New ad" id="page11" class=" " style="background-color:#DCD1EB;">
     <ion-content padding="true" class="has-header">
-        <form id="newAd-form4" class="list ">
-            <label class="item item-input " id="newAd-input11" name="itemName">
+        <form id="itemForm" name="itemForm" class="" ng-show="showForm" ng-submit="submitItem()" novalidate>
+            <label class="item item-input "  name="itemName">
                 <span class="input-label">Item name</span>
-                <input type="text" placeholder="Item name">
+                <input type="text"  ng-model="newItem.name" required>
             </label>
-            <label class="item item-input " id="newAd-textarea1" name="itemDescr">
-                <span class="input-label">Item description</span><textarea placeholder="Item description"></textarea>
+            <label class="item item-input"  name="itemDescr">
+                <span class="input-label">Item description</span><textarea class="form-control" rows="12" name="descr" id="descr"
+                                ng-model="newItem.descr"  required>
+                            </textarea>
             </label>
-            <label class="item item-select " id="newAd-select1" name="itemType">
+            <label class="item item-select " id="itemType" name="itemType">
                 <span class="input-label">Item type</span>
-                <select>
-                    <option>T-Shirt</option>
-                    <option>Pants</option>
-                    <option>Dress</option>
-                    <option>Shirt</option>
-                    <option>Sportswear</option>
-                    <option>Shoes</option>
-                    <option>Swimsuit</option>
-                    <option>Other</option>
+                <select type="text" id="type" ng-model="newItem.type" name="type" required>
+                         <option ng-repeat="type in allTypes" value="{{type.name}}">{{type.name}}</option>
                 </select>
             </label>
             <label class="item item-select " id="newAd-select2" name="itemSize">
                 <span class="input-label">Size</span>
-                <select>
-                    <option>Extra Small</option>
-                    <option>Small</option>
-                    <option>Medium</option>
-                    <option>Large</option>
-                    <option>Extra Large</option>
-                    <option>Double Extra Large</option>
-                </select>
+                <select type="text" id="size" ng-model="newItem.size" required>
+                            <!--
+                              <option value="XS">Extra Small</option>
+                              <option value="S">Small</option>
+                              <option value="M">Medium</option>
+                              <option value="L">Large</option>
+                              <option value="XL">Extra Large</option>
+                              <option value="2XL">Double Extra Large</option>
+                              -->
+                              <option ng-repeat="size in allSizes" value="{{size.region}} {{size.value}}">{{size.region}} {{size.value}}</option>
+                            </select>
             </label>
             <label class="item item-select " id="newAd-select3" name="itemState">
                 <span class="input-label">State</span>
-                <select>
-                    <option>Bad</option>
-                    <option>Good</option>
-                    <option>Like new</option>
-                    <option>Unworn</option>
-                </select>
+                <select type="text" id="state" ng-model="newItem.state" required placeholder="Item state">
+                              <option value="Bad">Bad</option>
+                              <option value="Good">Good</option>
+                              <option value="Like new">Like new</option>
+                              <option value="Unworn">Unworn</option>
+                            </select>
             </label>
             <label class="item item-select " id="newAd-select4" name="itemGender">
                 <span class="input-label">Gender</span>
-                <select>
-                    <option>Female</option>
-                    <option>Male</option>
-                </select>
+                <select type="text" id="gender" ng-model="newItem.gender" required>
+                              <option value="Female">Female</option>
+                              <option value="Male">Male</option>
+                            </select>
             </label>
             <label class="item item-select " id="newAd-select5" name="itemCategory">
                 <span class="input-label">Category</span>
-                <select>
-                    <option>Woman</option>
-                    <option>Man</option>
-                    <option>Girls</option>
-                    <option>Boys</option>
-                </select>
+                <select type="text" id="category" ng-model="newItem.category" required>
+                              <option value="Woman">Woman</option>
+                              <option value="Man">Man</option>
+                              <option value="Girls">Girls</option>
+                              <option value="Boys">Boys</option>
+                            </select>
             </label>
-            <button id="newAd-button17" class=" button button-dark  button-block ">New ad</button>
+            <button id="newAd-button17" class=" button button-dark  button-block ">Post new ad</button>
         </form>
+        <div ng-show="!showForm">
+        <h4 style="color:#000000;text-align:center;">{{message}}</h4>
+        </div>
     </ion-content>
 </ion-view>

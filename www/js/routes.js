@@ -22,6 +22,7 @@ angular.module('app.routes', [])
 
   .state('menu.woman', {
     url: '/woman',
+      cache: false,
     views: {
       'side-menu21': {
         templateUrl: 'templates/woman.html',
@@ -32,6 +33,7 @@ angular.module('app.routes', [])
 
   .state('menu.girls', {
     url: '/girls',
+      cache: false,
     views: {
       'side-menu21': {
         templateUrl: 'templates/girls.html',
@@ -41,6 +43,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.favorites', {
+      cache: false,
     url: '/favorites',
     views: {
       'side-menu21': {
@@ -52,6 +55,7 @@ angular.module('app.routes', [])
 
   .state('menu.myAds', {
     url: '/myads',
+      cache: false,
     views: {
       'side-menu21': {
         templateUrl: 'templates/myAds.html',
@@ -62,6 +66,7 @@ angular.module('app.routes', [])
 
   .state('menu.man', {
     url: '/man',
+      cache: false,
     views: {
       'side-menu21': {
         templateUrl: 'templates/man.html',
@@ -72,6 +77,7 @@ angular.module('app.routes', [])
 
   .state('menu.boys', {
     url: '/boys',
+      cache: false,
     views: {
       'side-menu21': {
         templateUrl: 'templates/boys.html',
@@ -110,6 +116,7 @@ angular.module('app.routes', [])
 
   .state('menu.newAd', {
     url: '/newad',
+      cache: false,
     views: {
       'side-menu21': {
         templateUrl: 'templates/newAd.html',

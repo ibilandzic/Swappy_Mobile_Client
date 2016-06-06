@@ -224,7 +224,6 @@ angular.module('app.controllers', [])
     if ($rootScope.currentUser) {
        
         console.log('user auth');
-        $scope.showFavorites = true;
         //try fetching favorites by accountId
         
         Favorites.find({"filter":{"where":
@@ -235,6 +234,7 @@ angular.module('app.controllers', [])
             $scope.favorites = response;
             
             if ($scope.favorites.length>0){
+                console.log("Favorites fetched");
                 $scope.showFavorites = true;
             }
            else{
@@ -315,11 +315,27 @@ angular.module('app.controllers', [])
 
     $scope.deleteItem = function(itemid) {
         
-        //todo delte all related favorite items
+        //destroy item
         Item.deleteById({id: itemid});
         console.log("Item deleted");
-        
-        $state.go($state.current, {}, {reload: true});
+   
+         Favorites.find({"filter":{"where":{"itemId": itemid}}}).$promise.then(function(response){
+            
+                $scope.favs = response;
+                
+                if ($scope.favs.length>0){
+                    for (var i=0; i<$scope.favs.length;i++){
+                        Favorites.deleteById({id:$scope.favs[i].id});
+                        console.log("Fav deleted");
+                    }
+                }
+                else ("Fav array is empty");
+                $state.go($state.current, {}, {reload: true});
+            
+        },function(response){
+            
+        });
+        //$state.go($state.current, {}, {reload: true});
     };
     
   
@@ -659,8 +675,109 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('newAdCtrl', function($scope) {
+.controller('newAdCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'Item','ItemType','ItemSize','Item_state','Accounts','Favorites','$window', function ($scope, $rootScope, $state, $stateParams, Item,ItemType,ItemSize,Item_state,Accounts,Favorites,$window) {
+    
+   $scope.allSizes={};
+   $scope.allTypes;
+   $scope.allStates={};
+   $scope.showForm=false;
+   $scope.message ="Loading ...";
+    $scope.form={};
+   
+  if ($rootScope.currentUser) {
+      
+      console.log('user auth');
+        $scope.showForm = true;
+        
+        //dodano je nije dobro u favorites controleru
+        $scope.account = Accounts.findById({id: $rootScope.currentUser.id});
+    }
+    else{
+        
+        $scope.message = "You are not logged in";
+    }
+   
+    
+    ItemType.find()
+        .$promise
+            .then(function(response){
+                //got all item types
+                $scope.allTypes = response;
+               
+            },
+            function(response){
+                //if response is blank, get default
+                $scope.showForm = false;
+                console.log("Unable to fetch item types");
+                $scope.message = "Unable to fetch item type data. Try again later.";
+                
+            });
+            
+            
+    ItemSize.find()
+        .$promise
+            .then(function(response){
+                $scope.allSizes = response;
+               
+            },function(response){
+                $scope.allSizes = "EUR M";
+                 
+            });
+            
+    
+    Item_state.find()
+        .$promise
+            .then(function(response){
+                $scope.allStates = response;
+                $scope.stateAvailable=true;
+            },function(response){
+                $scope.allStates = "Good";
+                 
+            });
+    
+    
+    
+    $scope.newItem = {
+        name: "",
+        descr: "",
+        type:"",
+        size:"EUR ",
+        state:"Good",
+        gender:"Female",
+        category:"Woman",
+        accountId:"",
+        contact:""
+    };
 
-})
+    $scope.submitItem = function () {
+        
+        
+        $scope.newItem.accountId = $rootScope.currentUser.id;
+        $scope.newItem.contact = $scope.account.email;
+        
+
+        Item.create($scope.newItem);
+        console.log('new item created');
+
+        
+        $scope.form.itemForm.$setPristine();
+        
+        $state.go($state.current, {}, {reload: true});
+        
+        $scope.newItem = {
+        name: "",
+        descr: "",
+        type:"",
+        size:"",
+        state:"",
+        gender:"",
+        category:"",
+        accountId:""
+    };
+       
+     
+       
+    }
+}])
 
  
